@@ -15,13 +15,13 @@ class CreateInfoDocsTable extends Migration
     {
         Schema::create('info_docs', function (Blueprint $table) {
             $table->id();
-            $table->string('number_id');
+            $table->string('number_id')->unique();
             $table->date('published');
             $table->date('redacted');
-            $table->string('key_auth');
+            $table->string('key_auth')->unique();
             $table->string('class_access');
 
-            $table->integer('doc_id');
+            $table->integer('doc_id')->unique();
             $table->index('doc_id');
             $table->foreign('id')->on('personals_lists')->references('id');
             $table->timestamps();
