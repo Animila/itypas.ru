@@ -30,7 +30,7 @@
         <p>{!! $personal['psych_profile'] !!}</p>
 
         <h3>Биография:</h3>
-        {!! $personal['bio'] !!}
+        {{$personal['bio']}}
 
         @isset($annexs)
         @foreach ($annexs as $key=>$item)
