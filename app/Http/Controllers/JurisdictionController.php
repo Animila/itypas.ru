@@ -7,7 +7,8 @@ class JurisdictionController
     public function __invoke()
     {
         $data = [
-            'title'=> 'ITYPAS Jurisdiction'
+            'title'=> 'ITYPAS Jurisdiction',
+            'description'=>'Юридическое подразделение корпорации ITYPAS (ITYPAS Jurisdiction)'
         ];
         return view('jurisdiction', compact('data'));
     }

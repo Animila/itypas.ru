@@ -13,6 +13,8 @@ public function __invoke(Request $request)
     $ip2 = $request->getClientIp();
     $data = [
         'title'=>'ITYPAS Inc',
+        'description'=>'Научно-исследовательская корпорация ITYPAS предоставляет множество услуг, начиная от многосторонней поддержки исследователей и заканчивая лицензированием патентов',
+        ''
     ];
     return view('index', compact('data', 'ip2'));
 }

@@ -13,7 +13,8 @@ public function __invoke($id)
     $personal = personals_lists::find($info->doc_id);
     $annexs = json_decode($personal['annex']);
     $data = [
-        'title'=> $personal->name
+        'title'=> $personal->name,
+        'description'=>$personal->name.'- '.$personal->position
     ];
     return view('personal', compact('data', 'personal', 'info', 'annexs'));
 }
