@@ -2,6 +2,7 @@
 @section('content')
 <section class="page personal-list">
     <div class="container">
+        @if($personal['name'] != 'СЕКРЕТ')
         <h2>Личное дело {{explode(', ', $personal['name'])[1]}} {{explode(', ', $personal['name'])[0]}}</h2>
         <hr>
         <div class="text-center">
@@ -30,8 +31,11 @@
         <p>{!! $personal['psych_profile'] !!}</p>
 
         <h3>Биография:</h3>
+        @endif
+
         {!! $personal['bio'] !!}
 
+        @if($personal['name'] != 'СЕКРЕТ')
         @isset($annexs)
         @foreach ($annexs as $key=>$item)
         <h3>Приложение {{$key}}</h3>
@@ -42,6 +46,7 @@
         @isset($personal['add'])
             {!! $personal['add'] !!}
         @endisset
+        @endif
 
         <a class="btn btn-secondary" role="button" href="{{route('personal_list')}}">Назад</a>
     </div>
