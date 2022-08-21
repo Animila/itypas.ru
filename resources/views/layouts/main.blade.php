@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" oncontextmenu='alert("Вы не можете сохранить это изображение.");return false;'>
 <head>
     <meta charset="UTF-8">
     <title>
@@ -14,6 +14,36 @@
 
 </head>
 <body>
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+<script id="rendered-js" >
+    document.addEventListener("keyup", function (e) {
+        var keyCode = e.keyCode ? e.keyCode : e.which;
+        if (keyCode == 44) {
+            stopPrntScr();
+        }
+    });
+    function stopPrntScr() {
+
+        var inpFld = document.createElement("input");
+        inpFld.setAttribute("value", ".");
+        inpFld.setAttribute("width", "0");
+        inpFld.style.height = "0px";
+        inpFld.style.width = "0px";
+        inpFld.style.border = "0px";
+        document.body.appendChild(inpFld);
+        inpFld.select();
+        document.execCommand("copy");
+        inpFld.remove(inpFld);
+    }
+    function AccessClipboardData() {
+        try {
+            window.clipboardData.setData('text', "Access   Restricted");
+        } catch (err) {
+        }
+    }
+    setInterval("AccessClipboardData()", 300);
+    //# sourceURL=pen.js
+</script>
 <header class="header fixed-top">
     <nav class="navbar navbar-expand-lg" style="background-color: #0066a1">
         <div class="container">
@@ -66,7 +96,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        <a class="text-dark" href="https://mdbootstrap.com/">itypas.ru</a>
+        <a class="text-dark" href="https://itypas.ruш/">itypas.ru</a>
     </div>
     <!-- Copyright -->
 </footer>

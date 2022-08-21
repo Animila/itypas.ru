@@ -16,3 +16,9 @@
         <hr>
     </div>
 </section>
+
+<script type="text/javascript">
+    $(document).keyup(function(e){
+        if(e.keyCode == 44) return false;
+    });
+</script>
