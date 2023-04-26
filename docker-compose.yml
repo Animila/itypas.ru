@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+    mysql:
+        image: mysql:latest
+        restart: always
+        volumes:
+            - ./tmp/db:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: itypas
+            MYSQL_ROOT_PASSWORD: 123
+        ports:
+            - 8101:3306
+        container_name: itypas_mysql
+
+    api:
+        build:
+            context: .
+            dockerfile: Docker/api/Dockerfile
+        container_name: itypas_api
+        depends_on:
+            - mysql
+        volumes:
+            - .:/var/www/itypas
+
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./:/var/www/itypas
+            - ./Docker/nginx/conf.d:/etc/nginx/conf.d
+        ports:
+            - 80:80
+        depends_on:
+            - api
+        container_name: itypas_nginx
